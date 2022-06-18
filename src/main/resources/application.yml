@@ -27,3 +27,6 @@ azure:
   leaseContainer: ItemsLeaseContainer
   primaryKey: U1XK07oYbaevqdmAasIuZ14X3aPpwIhK5hgMWWvHxAvzwdbPbDYBQaqIhQLTn72BfB1WJu6AbRAK5F45oPsqxw==
   databaseName: ItemsDatabase
+
+server:
+  port: 8085
