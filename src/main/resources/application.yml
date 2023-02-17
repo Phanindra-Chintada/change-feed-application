@@ -1,0 +1,32 @@
+Spring:
+  cloud:
+    stream:
+      function:
+        definition: process
+      bindings:
+        process-out-0:
+          destination: itemstopic
+      binders:
+        process-out-0:
+          type: kafka
+          defaultCandidate: true
+          replicationFactor: 1
+          environment:
+            spring:
+              kafka:
+                bootstrap-servers: pceventhubs.servicebus.windows.net:9093
+                properties:
+                  sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://pceventhubs.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=maIAEwtA+VTnmzg/NLxriR93ozp+1DA1LXdU38lOSAU=";
+                  sasl.mechanism: PLAIN
+                  security.protocol: SASL_SSL
+
+azure:
+  uri: https://pc-database.documents.azure.com:443/
+  hostName: host-1
+  feedContainer: ItemsFeedContainer
+  leaseContainer: ItemsLeaseContainer
+  primaryKey: U1XK07oYbaevqdmAasIuZ14X3aPpwIhK5hgMWWvHxAvzwdbPbDYBQaqIhQLTn72BfB1WJu6AbRAK5F45oPsqxw==
+  databaseName: ItemsDatabase
+
+server:
+  port: 8086
